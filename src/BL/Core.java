@@ -32,7 +32,10 @@ public class Core {
 	
 	//TODO
 	public void handleDeposit(Transaction t){
-		
+		User user = findUser(t.getToAccountNumber());
+		int balance = user.getBalance();
+		balance+=t.getAmount();
+		user.setAccountBalance(balance);
 	}
 	
 	//TODO
@@ -60,6 +63,11 @@ public class Core {
 		
 	}
 	
-	
+	private User findUser(String accountNumber){
+		for (User user : users)
+			if (accountNumber.equals(user.getAccountNumber()))
+				return user;
+		return null;
+	}
 
 }

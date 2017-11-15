@@ -13,8 +13,6 @@ public class Transaction {
 	String accountName;
 	
 	
-	//add other attributes
-	
 	
 	public Transaction(TransactionCodes code, String toAccountNumber, String amount, String fromAccountNumber, String accountName) {
 		CCC = code;
@@ -34,6 +32,10 @@ public class Transaction {
 	
 	public String getFromAccountNumber(){
 		return fromAccountNumber;
+	}
+	
+	public int getAmount(){
+		return Integer.parseInt(amount);
 	}
 	
 	public TransactionCodes getTC(){

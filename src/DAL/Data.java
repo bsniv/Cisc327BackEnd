@@ -33,9 +33,14 @@ public class Data {
     	return transactions;
     }
     
-    //TODO
     private Transaction parseLineToTransaction(String line){
-    	return null;
+    	String[] parts = line.split(" ");
+    	return new Transaction(
+    			Transaction.TransactionCodes.valueOf(parts[0]),
+    			parts[1],
+    	    	parts[2],
+    	    	parts[3],
+    			parts[4]);
     }
     
     
@@ -58,9 +63,9 @@ public class Data {
     }
     
     
-  //TODO
     private User parseLineToUser(String line){
-    	return null;
+    	String[] parts = line.split(" ");
+    	return new User(parts[0],Integer.parseInt(parts[1]),parts[2]);
     }
     
         

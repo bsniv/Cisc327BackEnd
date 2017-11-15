@@ -14,7 +14,22 @@ public class User {
 	
 	//TODO
 	public String toString(){
-		return null;
+		return accountNumber + " " + accountBalance + " " + userName;
 	}
 
+	public String getAccountNumber(){
+		return accountNumber;
+	}
+	
+	public int getBalance(){
+		return accountBalance;
+	}
+	
+	public String getUserName(){
+		return userName;
+	}
+	
+	public void setAccountBalance(int newBalance){
+		accountBalance = newBalance;
+	}
 }
