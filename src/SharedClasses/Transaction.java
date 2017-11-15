@@ -38,6 +38,10 @@ public class Transaction {
 		return Integer.parseInt(amount);
 	}
 	
+	public String getAccountName(){
+		return accountName;
+	}
+	
 	public TransactionCodes getTC(){
 		return CCC;
 	}

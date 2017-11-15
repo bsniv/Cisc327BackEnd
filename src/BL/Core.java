@@ -24,7 +24,6 @@ public class Core {
 				case DEP: handleDeposit(t); break;
 				case WDR: handleWithdraw(t); break;
 				case XFR: handleTransfer(t); break;
-				case EOS: handleEOS(t); break;
 			}
 		}
 		data.writeUsers(users);
@@ -38,29 +37,34 @@ public class Core {
 		user.setAccountBalance(balance);
 	}
 	
-	//TODO
 	public void handleWithdraw(Transaction t){
-	
+		User user = findUser(t.getToAccountNumber());
+		int balance = user.getBalance();
+		balance-=t.getAmount();
+		user.setAccountBalance(balance);	
 	}
 
-	//TODO
 	public void handleTransfer(Transaction t){
-	
+		User toUser = findUser(t.getToAccountNumber());
+		User fromUser = findUser(t.getFromAccountNumber());
+
+		int fromBalance = fromUser.getBalance();
+		fromBalance-=t.getAmount();
+		fromUser.setAccountBalance(fromBalance);			
+
+		int toBalance = toUser.getBalance();
+		toBalance+=t.getAmount();
+		toUser.setAccountBalance(toBalance);			
 	}
 	
-	//TODO
 	public void handleNew(Transaction t){
-		
+		users.add(new User(t.getFromAccountNumber(),0,t.getAccountName()));
 	}
 	
-	//TODO
+	
 	public void handleDelete(Transaction t){
-		
-	}
-	
-	//TODO
-	public void handleEOS(Transaction t){
-		
+		User user = findUser(t.getToAccountNumber());
+		users.remove(user);
 	}
 	
 	private User findUser(String accountNumber){
