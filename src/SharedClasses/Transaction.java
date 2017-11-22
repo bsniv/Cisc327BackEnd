@@ -32,6 +32,7 @@ public class Transaction {
 	}
 	
 	public String getFromAccountNumber(){
+		System.out.println("Getting Account Number: " + fromAccountNumber);
 		return fromAccountNumber;
 	}
 	
