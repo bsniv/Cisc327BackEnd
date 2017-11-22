@@ -78,11 +78,11 @@ public class Core {
 	
 	public void handleNew(Transaction t){
 		System.out.println("Transaction of type NEW was detected.");
-		if (findUser(t.getFromAccountNumber())!=null){
+		if (findUser(t.getToAccountNumber())!=null){
 			System.out.println("Invalid account creation, account number already in use.");
 			return;
 		}
-		users.add(new User(t.getFromAccountNumber(),0,t.getAccountName()));
+		users.add(new User(t.getToAccountNumber(),0,t.getAccountName()));
 		System.out.println("User added to LinkedList: " + users.getFirst().toString());
 	}
 	
