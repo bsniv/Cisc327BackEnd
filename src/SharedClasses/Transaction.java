@@ -27,6 +27,7 @@ public class Transaction {
 	}
 	
 	public String getToAccountNumber(){
+		System.out.println("Getting Account Number: " + toAccountNumber);
 		return toAccountNumber;
 	}
 	
@@ -35,10 +36,12 @@ public class Transaction {
 	}
 	
 	public int getAmount(){
+		System.out.println("Getting amount to be withdrawn.");
 		return Integer.parseInt(amount);
 	}
 	
 	public String getAccountName(){
+		System.out.println("Getting Account Name: " + accountName);
 		return accountName;
 	}
 	

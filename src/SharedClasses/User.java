@@ -7,6 +7,7 @@ public class User {
 	private String userName;
 	
 	public User(String accountNumber, int accountBalance, String userName) {
+		System.out.println("Constructing NEW user.");
 		this.accountNumber = accountNumber;
 		this.accountBalance = accountBalance;
 		this.userName = userName;
@@ -22,6 +23,7 @@ public class User {
 	}
 	
 	public int getBalance(){
+		System.out.println("Getting balance of: " + this.toString());
 		return accountBalance;
 	}
 	
@@ -30,6 +32,7 @@ public class User {
 	}
 	
 	public void setAccountBalance(int newBalance){
+		System.out.println("Setting new account balance to: " + newBalance);
 		accountBalance = newBalance;
 	}
 }
