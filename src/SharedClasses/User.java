@@ -3,10 +3,10 @@ package SharedClasses;
 public class User {
 
 	private String accountNumber;
-	private int accountBalance;
+	private String accountBalance;
 	private String userName;
 	
-	public User(String accountNumber, int accountBalance, String userName) {
+	public User(String accountNumber, String accountBalance, String userName) {
 		System.out.println("Constructing NEW user.");
 		this.accountNumber = accountNumber;
 		this.accountBalance = accountBalance;
@@ -22,7 +22,7 @@ public class User {
 		return accountNumber;
 	}
 	
-	public int getBalance(){
+	public String getBalance(){
 		System.out.println("Getting balance of: " + this.toString());
 		return accountBalance;
 	}
@@ -31,7 +31,10 @@ public class User {
 		return userName;
 	}
 	
-	public void setAccountBalance(int newBalance){
+	public void setAccountBalance(String newBalance){
+		while (newBalance.length() <3)
+			newBalance = "0" + newBalance;
+		
 		System.out.println("Setting new account balance to: " + newBalance);
 		accountBalance = newBalance;
 	}

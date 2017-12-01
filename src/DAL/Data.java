@@ -65,7 +65,7 @@ public class Data {
     
     private User parseLineToUser(String line){
     	String[] parts = line.split(" ");
-    	return new User(parts[0],Integer.parseInt(parts[1]),parts[2]);
+    	return new User(parts[0],parts[1],parts[2]);
     }
     
         

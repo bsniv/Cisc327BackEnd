@@ -33,7 +33,7 @@ public class Core {
 	//TODO
 	public void handleDeposit(Transaction t){
 		User user = findUser(t.getToAccountNumber());
-		int balance = user.getBalance();
+		String balance = user.getBalance();
 		balance+=t.getAmount();
 		user.setAccountBalance(balance);
 	}
@@ -46,10 +46,10 @@ public class Core {
 			System.out.println("User not found: " + t.getToAccountNumber());
 			return;
 		}
-		int balance = user.getBalance();
-		balance-=t.getAmount();
+		String balance = user.getBalance();
+		balance=Integer.toString(Integer.parseInt(balance)-t.getAmount());
 		
-		if (balance < 0)
+		if (Integer.parseInt(balance) < 0)
 		{
 			System.out.println("Invalid withdrawal, amount greater than balance.");
 			return;
@@ -62,17 +62,17 @@ public class Core {
 		User toUser = findUser(t.getToAccountNumber());
 		User fromUser = findUser(t.getFromAccountNumber());
 
-		int fromBalance = fromUser.getBalance();
-		fromBalance-=t.getAmount();
-		if (fromBalance < 0)
+		String fromBalance = fromUser.getBalance();
+		fromBalance=Integer.toString(Integer.parseInt(fromBalance)-t.getAmount());
+		if (Integer.parseInt(fromBalance) < 0)
 		{
 			System.out.println("Invalid transfer, amount greater than balance.");
 			return;
 		}
 		fromUser.setAccountBalance(fromBalance);			
 		
-		int toBalance = toUser.getBalance();
-		toBalance+=t.getAmount();
+		String toBalance = toUser.getBalance();
+		toBalance=Integer.toString(Integer.parseInt(toBalance)+t.getAmount());
 		toUser.setAccountBalance(toBalance);			
 	}
 	
@@ -82,14 +82,14 @@ public class Core {
 			System.out.println("Invalid account creation, account number already in use.");
 			return;
 		}
-		users.add(new User(t.getToAccountNumber(),0,t.getAccountName()));
+		users.add(new User(t.getToAccountNumber(),"000",t.getAccountName()));
 		System.out.println("User added to LinkedList: " + users.getFirst().toString());
 	}
 	
 	
 	public void handleDelete(Transaction t){
 		User user = findUser(t.getToAccountNumber());
-		if (user.getBalance() != 0)
+		if (user.getBalance() != "000")
 		{
 			System.out.println("Invalid account deletion, balance is not 0.");
 			return;
