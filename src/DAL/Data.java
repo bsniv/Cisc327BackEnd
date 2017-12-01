@@ -14,6 +14,7 @@ public class Data {
 
     private static String transactionFilePath="";
     private static String masterAccountFilePath="";
+    private static String validAccountsFilePath="";
 
     
     public LinkedList<Transaction> readTransactionFile(){
@@ -82,6 +83,18 @@ public class Data {
         catch (Exception e) {
             e.printStackTrace();
         }
+        
+        try {
+        	FileWriter writer = new FileWriter(validAccountsFilePath, false);
+        	PrintWriter printWriter = new PrintWriter(writer);
+        	for (User t : users)
+        		printWriter.print(t.getAccountNumber());
+        	printWriter.print("0000000");
+        	printWriter.close();
+        }
+        catch (Exception e ) {
+        	e.printStackTrace();
+        }
     }
     
     
@@ -98,6 +111,15 @@ public class Data {
     		masterAccountFilePath = System.getProperty("user.dir")+"\\users.txt";
     	else
     		masterAccountFilePath = System.getProperty("user.dir")+"\\"+path;
+    }
+    
+    public static void setValidAccountsFilePath(String path)
+    {
+    	if (path == null)
+    		validAccountsFilePath = System.getProperty("user.dir")+"\\validUsers.txt";
+    	else
+    		validAccountsFilePath = System.getProperty("user.dir")+"\\"+path;
+    		
     }
 
 }
