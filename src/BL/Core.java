@@ -34,7 +34,7 @@ public class Core {
 	public void handleDeposit(Transaction t){
 		User user = findUser(t.getToAccountNumber());
 		String balance = user.getBalance();
-		balance+=t.getAmount();
+		balance=Integer.toString(Integer.parseInt(balance)+t.getAmount());;
 		user.setAccountBalance(balance);
 	}
 	
